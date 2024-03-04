@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body style="background-image: url(imgs/fundo.jpg)">
+        
+        <h:form >
+          
+            <p:growl/>
+            <p:panel header="Pesquisar Estudante" style="text-align: center">
+                    <div style="display: flex; justify-content: center; margin: auto;">
+            <h:panelGrid columns="9" style="text-align: center">
+                
+                
+                <p:inputText placeholder="NOME" value="#{managerStudent.student.nameStudent}" />
+                
+           
+                <p:inputText placeholder="CPF" value="#{managerStudent.student.cpf}" />
+                
+         
+                <p:inputText placeholder="TELEFONE" value="#{managerStudent.student.phoneNumberStudent}"/>
+                
+    
+                <p:inputText  placeholder="EMAIL" value="#{managerStudent.student.emailStudent}"/>
+                
+                <p:commandButton value="PESQUISAR" actionListener="#{managerStudent.search()}" update="@form"  /> 
+                </h:panelGrid>
+                        </div>
+            </p:panel>
+                
+                <p:dataTable value="#{managerStudent.students}" var="student">
+                    <p:column headerText="Ações">
+                        
+                        <p:button icon="pi pi-pencil" styleClass="rounded-button ui-button-info ui-button-outlined" href="student.xhtml?editar=#{student.id}"/>
+                        <p:button icon="pi pi-heart" styleClass="rounded-button ui-button-help ui-button-outlined"  onclick="#{managerStudent.remove()}"/>
+                        
+                    </p:column>
+                    <p:column headerText="nome">
+                        <p:outputLabel value="#{student.nameStudent}"/>
+                    </p:column>
+                    
+                    <p:column headerText="CPF">
+                        <p:outputLabel value="#{student.cpf}"/>
+                    </p:column>
+                 
+                   
+                    <p:column headerText="Gênero">
+                        <p:outputLabel value="#{student.gender}"/>
+                    </p:column>
+                    <p:column headerText="Telefone">
+                        <p:outputLabel value="#{student.phoneNumberStudent}"/>
+                    </p:column>
+                    <p:column headerText="Email"> 
+                        <p:outputLabel value="#{student.emailStudent}"/>
+                    </p:column>
+                </p:dataTable>
+             
+           
+        </h:form>
+        
+    </h:body>
+</html>

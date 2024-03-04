@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <style>
+        .card{
+            background-image: url(imgs/fundo.jpg)
+        }
+        .book{
+            display: flex; justify-content: center; margin: auto; 
+        }
+        .editora{
+            display: flex; justify-content: center; margin: auto; 
+        }
+        
+    </style>
+    <h:body class="card">
+        <h:form>
+            <div class="book">
+        <p:growl id="growl" showDetail="true" />
+        <p:growl id="growl-sticky" for="sticky-key" showDetail="true" sticky="true" />
+        <p:panel header="Cadrastro de Livro" style="text-align: center" >
+
+                <h:panelGrid columns="4" >
+                    <p:outputLabel value="Título :" for="inputTitle"/>
+                    <p:inputText id="inputTitle"  placeholder="Título" value="#{managerBook.book.title}" required="true"/>
+                          
+                    <p:outputLabel value="Data de Publicação :" for="inputRegistrationDate"/>
+                    <p:calendar id="inputRegistrationDate"  placeholder="Data de Publicação" value="#{managerBook.book.publicationDateBook}" required="true"/>
+                 
+                    <p:outputLabel value="ISBN :" for="inputISBN"/>
+                    <p:inputText id="inputISBN" placeholder="ISBN" value="#{managerBook.book.isbn}"  required="true"/>
+                   
+                    <p:outputLabel value="Classificação :" for="inputGenderBook"/>
+                    <p:inputText id="inputGenderBook" placeholder="Classificação" value="#{managerBook.book.genderBook}" required="true"/>
+                    
+                   
+                    <p:outputLabel value="Quantidade :" for="inputQuantity"/>
+                    <p:inputNumber id="inputQuantity" placeholder="Quantidade" value="#{managerBook.book.quantity}" required="true"/>
+
+                    <p:outputLabel value="Autor(a) :" for="inputNameAuthor"/>
+                    <p:inputText id="inputNameAuthor"  placeholder="Autor(a)" value="#{managerBook.book.author.name}" required="true"/>
+                    
+                    <p:outputLabel value="Nº de Páginas" for="inputNumberOfPages"/>
+                    <p:inputText id="inputNumberOfPages" value="#{managerBook.book.numberPages}"/>
+                
+                </h:panelGrid>
+            <h3>Editora</h3>
+                
+                <h:panelGrid columns="4">
+                    <p:outputLabel value="Nome :" for="inputNamePublisher"/>
+                    <p:inputText id="inputNamePublisher" placeholder="Editora" value="#{managerBook.book.publisher.namePublisher}" required="true"/>
+                    <p:outputLabel value="Telefone :" for="inputPhoneNumberPublisher"/>
+                    <p:inputText id="inputPhoneNumberPublisher" placeholder="Telefone" value="#{managerBook.book.publisher.phoneNumberPublisher}" required="true"/>
+                    <p:outputLabel value="Email :" for="inputEmailPublisher"/>
+                    <p:inputText id="inputEmailPublisher" placeholder="Email" value="#{managerBook.book.publisher.emailPublisher}"/>
+                    <p:outputLabel value="CNPJ :" for="inputCnpjPublisher" />
+                    <p:inputText id="inputCnpjPublisher" placeholder="CNPJ" value="#{managerBook.book.publisher.cnpj}"/>
+                    <p:outputLabel value="Representante :" for="inputCeoPublisher"/>
+                    <p:inputText id="inputCeoPublisher"  placeholder="Representante" value="#{managerBook.book.publisher.ceo}"/>
+
+                </h:panelGrid>
+                <p:button value="VOLTAR" href="index.xhtml" style="margin-right: .5rem;"  />
+                <p:commandButton value="SALVAR" actionListener="#{managerBook.saveBook()}" update="@form"/>
+            </p:panel>
+        </div>
+           
+            
+        </h:form>
+    </h:body>
+</html>

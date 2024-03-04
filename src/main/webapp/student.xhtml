@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <style>
+        .card{
+            background-image: url(imgs/fundo.jpg);
+        }
+        .card .student{
+             display: flex; justify-content: center; margin: auto;
+        }
+    </style>
+    <h:body class="card">
+        <h:form>
+            <div class="student">
+        <p:growl id="growl" showDetail="true" />
+        <p:growl id="growl-sticky" for="sticky-key" showDetail="true" sticky="true" />
+        <p:panel header="Cadrastro de Estudante" style="text-align: center">
+                <h:panelGrid columns="4">
+                    <p:outputLabel value="Nome :" for="inputNameStudent"/>
+                    <p:inputText id="inputNameStudent" placeholder="Nome" value="#{managerStudent.student.nameStudent}" required="true"/>
+                     
+                    <p:outputLabel value="CPF :" for="inputCPF"/>
+                    <p:inputMask id="inputCPF" mask="999.999.999-99" placeholder="CPF" value="#{managerStudent.student.cpf}" required="true"/>
+                    
+                    <p:outputLabel value="Data de nascimento :" for="inputdateOfBirthday"/>
+                    <p:datePicker id="inputdateOfBirthday"  placeholder="Data de Nascimento " value="#{managerStudent.student.dateOfBirthday}" required="true"
+                                  monthNavigator="true" yearNavigator="true" />
+            
+					
+                    <p:outputLabel value="Telefone :" for="inputPhoneNumberStudent"/>
+                    <p:inputMask id="inputPhoneNumberStudent" mask="(99)9 9999-9999" placeholder="Telefone" value="#{managerStudent.student.phoneNumberStudent}"/>
+                    
+                    <p:outputLabel value="Gênero :" for="inputGenero"/>
+                    <p:selectOneRadio id="inputGenero" value="#{managerStudent.student.gender}" required="true">
+                        <f:selectItems value="#{managerStudent.genero}" />   
+                    </p:selectOneRadio>
+                    
+                    
+                    <p:outputLabel value="Email :" for="inputEmailStudent"/>
+                    <p:inputText id="inputEmailStudent"  placeholder="Email" value="#{managerStudent.student.emailStudent}" />
+                    
+                    
+                </h:panelGrid>
+                
+            
+        <h3>Endereço</h3>
+        <div style="display: flex; justify-content: center; margin: auto">
+                <h:panelGrid columns="4">
+                    
+                    <p:outputLabel value="Rua :" for="inputRua" />
+                    <p:inputText id="inputRua"  placeholder="Rua" value="#{managerStudent.student.address.rua}" />
+                    
+                    <p:outputLabel value="Número :" for="inputNumero"/>
+                    <p:inputText id="inputNumero"  placeholder="Número" value="#{managerStudent.student.address.numero}" />
+                    
+                    <p:outputLabel value="Bairro :" for="inputBairro"/>
+                    <p:inputText id="inputBairro"  placeholder="Bairro" value="#{managerStudent.student.address.bairro}" />
+                    
+                    <p:outputLabel value="Cidade :" for="inputCidade"/>
+                    <p:inputText id="inputCidade"  placeholder="Cidade" value="#{managerStudent.student.address.cidade}" />
+                    
+                    <p:outputLabel value="CEP :" for="inputCep"/>
+                    <p:inputText id="inputCep" placeholder="Cep" value="#{managerStudent.student.address.cep}"/>
+                    
+                    <p:outputLabel value="Estado :" for="inputEstado"/>
+                    <p:inputText id="inputEstado" placeholder="Estado" value="#{managerStudent.student.address.estado}" />
+                    
+               
+                </h:panelGrid>
+             </div>
+        <p:button value="VOLTAR" href="index.xhtml" style="margin-right: .5rem;"  />
+        <p:commandButton value="SALVAR" actionListener="#{managerStudent.save()}" update="@form"/>
+            </p:panel>
+            
+            
+            </div>
+            
+        </h:form>
+    </h:body>
+</html>

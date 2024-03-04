@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    
+    <h:body  style="background-image: url(imgs/fundo.jpg)">
+        <h:form  style="display: flex; justify-content: center; margin: auto">
+            <p:growl id="growl" showDetail="true" />
+            <p:growl id="growl-sticky" for="sticky-key" showDetail="true" sticky="true" />
+            <p:panel header="Empréstimo de Livro"  style="text-align: center">
+                <h:panelGrid columns="2" >
+                    <p:outputLabel value="Aluno : " for="@next"/>
+                    <p:autoComplete id="acSimple" value="#{managerLoan.loan.student}" converter="StudentConverter" var="estudante" itemValue="#{estudante}" itemLabel="#{estudante.nameStudent}"
+                                    completeMethod="#{managerLoan.autocompleteName}" scrollHeight="250"/>
+
+                    <p:outputLabel value="Livro : " for="@next"/>
+                    <p:autoComplete id="book" value="#{managerLoan.loan.book}" converter="BookConverter" var="livro" itemValue="#{livro}" itemLabel="#{livro.title}"
+                                    completeMethod="#{managerLoan.autocompleteBook}" scrollHeight="250"/>
+
+                    <p:outputLabel value="Data de Registro" for="inputRegistration"/>
+                    <p:calendar id="inputRegistration" value="#{managerLoan.loan.registrationDate}" required="true"/>
+                    <p:outputLabel value="Data de Devolução" for="inputReturn"/>
+                    <p:calendar id="inputReturn" value="#{managerLoan.loan.dateUpdated}" required="true"/>
+                    
+                    <p:button value="VOLTAR" href="index.xhtml"  />
+                    <p:commandButton value="SALVAR" actionListener="#{managerLoan.save()}" update="@form" />
+                    
+                </h:panelGrid>
+                </p:panel>
+                
+            </h:form>
+    </h:body>
+</html>
